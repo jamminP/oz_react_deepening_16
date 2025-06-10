@@ -1,4 +1,5 @@
 import TodoItem from './TodoItem';
+import { memo } from 'react';
 
 const TodoList = ({ todos, onToggle, onDelete, onEdit }) => {
     if (todos.length === 0) {
@@ -14,4 +15,4 @@ const TodoList = ({ todos, onToggle, onDelete, onEdit }) => {
     );
 };
 
-export default TodoList;
+export default memo(TodoList);

@@ -1,11 +1,13 @@
+import { memo, useMemo } from 'react';
+
 const TodoStats = ({ todos }) => {
-    const calculateStats = () => {
+    const calculateStats = useMemo(() => {
         const total = todos.length;
         const completed = todos.filter((todo) => todo.completed).length;
         const active = total - completed;
         const percentCompleted = total === 0 ? 0 : Math.round((completed / total) * 100);
         return { total, completed, active, percentCompleted };
-    };
+    }, [todos]);
 
     const stats = calculateStats();
 
@@ -23,4 +25,4 @@ const TodoStats = ({ todos }) => {
     );
 };
 
-export default TodoStats;
+export default memo(TodoStats);
